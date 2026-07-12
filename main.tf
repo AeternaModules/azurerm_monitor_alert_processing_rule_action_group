@@ -101,14 +101,14 @@ resource "azurerm_monitor_alert_processing_rule_action_group" "monitor_alert_pro
         for_each = schedule.value.recurrence != null ? [schedule.value.recurrence] : []
         content {
           dynamic "daily" {
-            for_each = recurrence.value.daily != null ? [recurrence.value.daily] : []
+            for_each = recurrence.value.daily != null ? recurrence.value.daily : []
             content {
               end_time   = daily.value.end_time
               start_time = daily.value.start_time
             }
           }
           dynamic "monthly" {
-            for_each = recurrence.value.monthly != null ? [recurrence.value.monthly] : []
+            for_each = recurrence.value.monthly != null ? recurrence.value.monthly : []
             content {
               days_of_month = monthly.value.days_of_month
               end_time      = monthly.value.end_time
@@ -116,7 +116,7 @@ resource "azurerm_monitor_alert_processing_rule_action_group" "monitor_alert_pro
             }
           }
           dynamic "weekly" {
-            for_each = recurrence.value.weekly != null ? [recurrence.value.weekly] : []
+            for_each = recurrence.value.weekly != null ? recurrence.value.weekly : []
             content {
               days_of_week = weekly.value.days_of_week
               end_time     = weekly.value.end_time
