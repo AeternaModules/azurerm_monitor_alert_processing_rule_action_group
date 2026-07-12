@@ -1,3 +1,7 @@
+output "monitor_alert_processing_rule_action_groups_id" {
+  description = "Map of id values across all monitor_alert_processing_rule_action_groups, keyed the same as var.monitor_alert_processing_rule_action_groups"
+  value       = { for k, v in azurerm_monitor_alert_processing_rule_action_group.monitor_alert_processing_rule_action_groups : k => v.id }
+}
 output "monitor_alert_processing_rule_action_groups_add_action_group_ids" {
   description = "Map of add_action_group_ids values across all monitor_alert_processing_rule_action_groups, keyed the same as var.monitor_alert_processing_rule_action_groups"
   value       = { for k, v in azurerm_monitor_alert_processing_rule_action_group.monitor_alert_processing_rule_action_groups : k => v.add_action_group_ids }
