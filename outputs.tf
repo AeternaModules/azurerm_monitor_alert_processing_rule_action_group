@@ -8,7 +8,7 @@ output "monitor_alert_processing_rule_action_groups_add_action_group_ids" {
 }
 output "monitor_alert_processing_rule_action_groups_condition" {
   description = "Map of condition values across all monitor_alert_processing_rule_action_groups, keyed the same as var.monitor_alert_processing_rule_action_groups"
-  value       = { for k, v in azurerm_monitor_alert_processing_rule_action_group.monitor_alert_processing_rule_action_groups : k => v.condition if v.condition != null && length(v.condition) > 0 }
+  value       = { for k, v in azurerm_monitor_alert_processing_rule_action_group.monitor_alert_processing_rule_action_groups : k => one(v.condition) if v.condition != null && length(v.condition) > 0 }
 }
 output "monitor_alert_processing_rule_action_groups_description" {
   description = "Map of description values across all monitor_alert_processing_rule_action_groups, keyed the same as var.monitor_alert_processing_rule_action_groups"
@@ -28,7 +28,7 @@ output "monitor_alert_processing_rule_action_groups_resource_group_name" {
 }
 output "monitor_alert_processing_rule_action_groups_schedule" {
   description = "Map of schedule values across all monitor_alert_processing_rule_action_groups, keyed the same as var.monitor_alert_processing_rule_action_groups"
-  value       = { for k, v in azurerm_monitor_alert_processing_rule_action_group.monitor_alert_processing_rule_action_groups : k => v.schedule if v.schedule != null && length(v.schedule) > 0 }
+  value       = { for k, v in azurerm_monitor_alert_processing_rule_action_group.monitor_alert_processing_rule_action_groups : k => one(v.schedule) if v.schedule != null && length(v.schedule) > 0 }
 }
 output "monitor_alert_processing_rule_action_groups_scopes" {
   description = "Map of scopes values across all monitor_alert_processing_rule_action_groups, keyed the same as var.monitor_alert_processing_rule_action_groups"
